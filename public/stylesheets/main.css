@@ -1,0 +1,89 @@
+#loading {
+  display: none;
+  width: 100%;
+  text-align: center;
+}
+
+.input {
+  width: 800px;
+  margin: auto;
+}
+
+#song-search {
+  width: 762px;
+  margin: 1rem;
+}
+
+#recent-text {
+  text-align: center;
+  display: none;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.song-container {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  background-color: hsla(0, 0%, 0%, 0.61);
+  color: white;
+  border-radius: 10px;
+  border: 3px solid black;
+}
+
+.song-container > * {
+  margin: 0.5rem;
+}
+
+.song-jacket {
+  border: 3px solid black;
+  width: 196px;
+  height: 196px;
+}
+
+#results {
+  width: 800px;
+  margin: auto;
+}
+
+#recent {
+  width: 800px;
+  margin: auto;
+}
+
+.song-info {
+  width: 430px;
+}
+
+.song-level {
+  display: grid;
+  grid-template-columns: 48px 48px;
+  gap: 0.5rem;
+}
+
+.song-level > * {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  color: white;
+  border-radius: 50px;
+}
+
+.basic {
+  background-color: #16ff48;
+}
+
+.advanced {
+  background-color: #ffba00;
+}
+
+.expert {
+  background-color: #fa0667;
+}
+
+.master {
+  background-color: #a810ff;
+}
