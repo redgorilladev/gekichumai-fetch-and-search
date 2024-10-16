@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const recentText = document.getElementById("recent-text");
   const fragment2 = document.createDocumentFragment();
   let songs = [];
+  console.log(JSON.parse(localStorage.getItem("chartID")));
   try {
     loading.style.display = "block";
     searchInput.disabled = true;
@@ -18,7 +19,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchInput.disabled = false;
     console.log(songs);
     console.log(filterRecentSongs(songs));
-    showRecent(recentText, songs, fragment2, recent);
+    // showRecent(recentText, songs, fragment2, recent);
+    showFavourites(recentText, songs, fragment2, recent);
   } catch (error) {
     console.error("Error fetching songs:", error);
   }
@@ -60,6 +62,9 @@ function renderSongs(array, fragment, container) {
     const conatiner = document.createElement("div");
     conatiner.classList = "song-container";
     conatiner.innerHTML = `
+        <button class="fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
+      <img class="fav-icon" src="/star-outline.svg" alt="" />
+    </button>
       <img src="https://ongeki-net.com/ongeki-mobile/img/music/${element.image_url}" alt="" class="song-jacket" loading="lazy" />
       <div class="song-info">
         <div class="song-category">${element.category}</div>
@@ -91,6 +96,36 @@ function debounce(func, delay) {
 
 function showRecent(text, array, fragment, container) {
   text.style.display = "block";
+  text.innerHTML = "Recently Added";
   const recentSongs = filterRecentSongs(array);
   renderSongs(recentSongs, fragment, container);
+}
+
+function showFavourites(text, array, fragment, container) {
+  text.style.display = "block";
+  text.innerHTML = "Favourites";
+  let favourites = JSON.parse(localStorage.getItem("chartID")) || [];
+  let favouriteSongs = array.filter((element) =>
+    favourites.includes(element.id)
+  );
+  console.log("favourite songs:", favouriteSongs);
+  renderSongs(favouriteSongs, fragment, container);
+}
+
+function addFavourite(chartid) {
+  let favourites = [];
+  let currentFavourites = JSON.parse(localStorage.getItem("chartID")) || [];
+  const itemIndex = currentFavourites.indexOf(chartid);
+
+  console.log("current favourites:", currentFavourites);
+  console.log("item index:", itemIndex);
+
+  if (itemIndex > -1) {
+    currentFavourites.splice(itemIndex, 1);
+  } else {
+    favourites = [...currentFavourites, chartid];
+    currentFavourites = favourites;
+  }
+
+  localStorage.setItem("chartID", JSON.stringify(currentFavourites));
 }
