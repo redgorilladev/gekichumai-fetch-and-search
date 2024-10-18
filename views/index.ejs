@@ -1,12 +1,17 @@
 <div class="input">
   <h2 class="page-title">ongeki dynamic search</h2>
-  <input type="text" name="song-search" id="song-search" />
+  <div class="tabs">
+    <button class="tab-btn" id="search-nav-btn">Search</button>
+    <button class="tab-btn" id="fav-nav-btn">Favourites</button>
+    <button class="tab-btn active" id="recent-nav-btn">Recent</button>
+  </div>
+  <input
+    type="text"
+    name="song-search"
+    id="song-search"
+    placeholder="enter song title or artist name..."
+  />
   <div id="loading">loading song data...</div>
-</div>
-<div class="tabs">
-  <button id="search-nav-btn">Search</button>
-  <button id="fav-nav-btn">Favourites</button>
-  <button id="recent-nav-btn">Recent</button>
 </div>
 <div id="results">
   <!-- for style testing without requiring data load each refresh -->
@@ -106,6 +111,5 @@
     </div>
   </div> -->
 </div>
-<h2 id="recent-text">recently added</h2>
 <div id="recent"></div>
 <div id="favourites"></div>

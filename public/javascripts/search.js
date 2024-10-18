@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const loading = document.getElementById("loading");
   const recent = document.getElementById("recent");
   const favourites = document.getElementById("favourites");
-  const recentText = document.getElementById("recent-text");
   const fragment2 = document.createDocumentFragment();
   const favNavBtn = document.getElementById("fav-nav-btn");
   const recentNavBtn = document.getElementById("recent-nav-btn");
@@ -25,25 +24,34 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchInput.disabled = false;
     console.log(songs);
     console.log(filterRecentSongs(songs));
-    showRecent(recentText, songs, fragment2, recent);
-    //showFavourites(recentText, songs, fragment2, favourites);
+
+    // the landing view / default on refresh
+    showRecent(songs, fragment2, recent);
   } catch (error) {
     console.error("Error fetching songs:", error);
   }
 
+  function setActiveButton(button) {
+    [favNavBtn, recentNavBtn, searchNavBtn].forEach((button) =>
+      button.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    results.innerHTML = "";
+    recent.innerHTML = "";
+    favourites.innerHTML = "";
+  }
   searchInput.addEventListener(
     "input",
     debounce(() => {
-      results.innerHTML = "";
-      recent.innerHTML = "";
-      favourites.innerHTML = "";
-      recentText.style.display = "none";
+      setActiveButton(searchNavBtn);
       const fragment = document.createDocumentFragment();
 
       console.log(searchInput.value);
 
       if (searchInput.value == "") {
-        showRecent(recentText, songs, fragment2, recent);
+        showRecent(songs, fragment2, recent);
       } else {
         const filteredSongs = filterSongs(songs, `${searchInput.value}`);
         renderSongs(filteredSongs, fragment, results);
@@ -52,27 +60,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
 
   favNavBtn.addEventListener("click", () => {
-    results.innerHTML = "";
-    recent.innerHTML = "";
-    favourites.innerHTML = "";
+    setActiveButton(favNavBtn);
     isFavouritesActive = true;
-    showFavourites(recentText, songs, fragment2, favourites);
+    showFavourites(songs, fragment2, favourites);
   });
 
   recentNavBtn.addEventListener("click", () => {
-    results.innerHTML = "";
-    recent.innerHTML = "";
-    favourites.innerHTML = "";
+    setActiveButton(recentNavBtn);
     isFavouritesActive = false;
-    showRecent(recentText, songs, fragment2, recent);
+    showRecent(songs, fragment2, recent);
   });
 
   searchNavBtn.addEventListener("click", () => {
     const fragment = document.createDocumentFragment();
-    results.innerHTML = "";
-    recent.innerHTML = "";
-    favourites.innerHTML = "";
-    recentText.style.display = "none";
+    setActiveButton(searchNavBtn);
     isFavouritesActive = false;
     const filteredSongs = filterSongs(songs, `${searchInput.value}`);
     renderSongs(filteredSongs, fragment, results);
@@ -80,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.addEventListener("renderFavourites", () => {
     favourites.innerHTML = "";
-    showFavourites(recentText, songs, fragment2, favourites);
+    showFavourites(songs, fragment2, favourites);
   });
 });
 
@@ -99,7 +100,19 @@ function filterRecentSongs(array) {
 
 function renderSongs(array, fragment, container) {
   const favourites = JSON.parse(localStorage.getItem("chartID") || []);
-
+  const length = array.length;
+  console.log("results:", length);
+  console.log(container.id);
+  const numberOfResults = document.createElement("h2");
+  if (container.id === "results") {
+    numberOfResults.innerHTML = `${length} Result(s)`;
+  }
+  if (container.id === "favourites") {
+    numberOfResults.innerHTML = `${length} Favourites`;
+  }
+  if (container.id === "recent") {
+    numberOfResults.innerHTML = `Data Updated Here`;
+  }
   array.forEach((element) => {
     const conatiner = document.createElement("div");
     conatiner.classList = "song-container";
@@ -127,6 +140,7 @@ function renderSongs(array, fragment, container) {
     fragment.appendChild(conatiner);
   });
 
+  container.appendChild(numberOfResults);
   container.appendChild(fragment);
 }
 
@@ -138,16 +152,12 @@ function debounce(func, delay) {
   };
 }
 
-function showRecent(text, array, fragment, container) {
-  text.style.display = "block";
-  text.innerHTML = "Recently Added";
+function showRecent(array, fragment, container) {
   const recentSongs = filterRecentSongs(array);
   renderSongs(recentSongs, fragment, container);
 }
 
-function showFavourites(text, array, fragment, container) {
-  text.style.display = "block";
-  text.innerHTML = "Favourites";
+function showFavourites(array, fragment, container) {
   let favourites = JSON.parse(localStorage.getItem("chartID")) || [];
   let favouriteSongs = array.filter((element) =>
     favourites.includes(element.id)
@@ -160,6 +170,8 @@ function addFavourite(chartid) {
   let favourites = [];
   let currentFavourites = JSON.parse(localStorage.getItem("chartID")) || [];
   const itemIndex = currentFavourites.indexOf(chartid);
+  const messageElement =
+    document.getElementById("favouriteMessage") || createMessageElement();
 
   console.log("current favourites:", currentFavourites);
   console.log("item index:", itemIndex);
@@ -171,9 +183,11 @@ function addFavourite(chartid) {
       const event = new Event("renderFavourites");
       document.dispatchEvent(event);
     }
+    showMessage("Removed from favorites", messageElement);
   } else {
     favourites = [...currentFavourites, chartid];
     currentFavourites = favourites;
+    showMessage("Added to favorites", messageElement);
   }
 
   localStorage.setItem("chartID", JSON.stringify(currentFavourites));
@@ -193,4 +207,33 @@ function addFavourite(chartid) {
   } else {
     console.error("Favourite button not found for chartid:", chartid);
   }
+}
+
+// Function to create the message element if it doesn't exist
+function createMessageElement() {
+  const messageElement = document.createElement("div");
+  messageElement.id = "favouriteMessage";
+  messageElement.style.position = "fixed";
+  messageElement.style.bottom = "20px";
+  messageElement.style.left = "50%";
+  messageElement.style.transform = "translateX(-50%)";
+  messageElement.style.padding = "10px";
+  messageElement.style.backgroundColor = "#333";
+  messageElement.style.color = "#fff";
+  messageElement.style.borderRadius = "5px";
+  messageElement.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.2)";
+  messageElement.style.zIndex = "1000";
+  messageElement.style.opacity = "0";
+  messageElement.style.transition = "opacity 0.3s";
+  document.body.appendChild(messageElement);
+  return messageElement;
+}
+
+function showMessage(text, messageElement) {
+  messageElement.textContent = text;
+  messageElement.style.opacity = "1";
+
+  setTimeout(() => {
+    messageElement.style.opacity = "0";
+  }, 1000);
 }
