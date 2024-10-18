@@ -69,6 +69,11 @@
   margin: auto;
 }
 
+#favourites {
+  width: 800px;
+  margin: auto;
+}
+
 .song-info {
   width: 430px;
 }
@@ -88,6 +93,13 @@
   border-radius: 50px;
 }
 
+.tabs {
+  width: 800px;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .basic {
   background-color: #16ff48;
 }
@@ -102,4 +114,32 @@
 
 .master {
   background-color: #a810ff;
+}
+
+.オンゲキ {
+  color: #ff7dab;
+}
+.POPS＆ANIME {
+  color: #f06;
+}
+.niconico {
+  color: #ffd822;
+}
+.東方Project {
+  color: #cf3eff;
+}
+.VARIETY {
+  color: #00c312;
+}
+
+.チュウマイ {
+  color: #42b6ff;
+}
+
+.lunatic {
+  color: #f8ff2f;
+}
+
+.bonustrack {
+  color: orange;
 }

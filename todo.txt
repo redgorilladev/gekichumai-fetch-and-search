@@ -1,12 +1,8 @@
 mobile layout
-favourite icon fills in when a chart is in favourites
 link to home
-button to show favourites
-re render the favourites div on removal of a favourite
 alert/pop up "added/removed from favourites"
 change song container bg from grey to something else
-3 tabs: search, recent, favourites
+style the 3 tabs: search, recent, favourites
 handle lunatic chart id's
-add colors for different genres
 remove all favourites button
-add new flag 
+change recent to check for date added then only display for that date

@@ -1,10 +1,16 @@
+let isFavouritesActive = false;
+
 document.addEventListener("DOMContentLoaded", async () => {
   const searchInput = document.getElementById("song-search");
   const results = document.getElementById("results");
   const loading = document.getElementById("loading");
   const recent = document.getElementById("recent");
+  const favourites = document.getElementById("favourites");
   const recentText = document.getElementById("recent-text");
   const fragment2 = document.createDocumentFragment();
+  const favNavBtn = document.getElementById("fav-nav-btn");
+  const recentNavBtn = document.getElementById("recent-nav-btn");
+  const searchNavBtn = document.getElementById("search-nav-btn");
   let songs = [];
   console.log(JSON.parse(localStorage.getItem("chartID")));
   try {
@@ -19,8 +25,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchInput.disabled = false;
     console.log(songs);
     console.log(filterRecentSongs(songs));
-    // showRecent(recentText, songs, fragment2, recent);
-    showFavourites(recentText, songs, fragment2, recent);
+    showRecent(recentText, songs, fragment2, recent);
+    //showFavourites(recentText, songs, fragment2, favourites);
   } catch (error) {
     console.error("Error fetching songs:", error);
   }
@@ -30,6 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     debounce(() => {
       results.innerHTML = "";
       recent.innerHTML = "";
+      favourites.innerHTML = "";
       recentText.style.display = "none";
       const fragment = document.createDocumentFragment();
 
@@ -43,6 +50,38 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }, 300)
   );
+
+  favNavBtn.addEventListener("click", () => {
+    results.innerHTML = "";
+    recent.innerHTML = "";
+    favourites.innerHTML = "";
+    isFavouritesActive = true;
+    showFavourites(recentText, songs, fragment2, favourites);
+  });
+
+  recentNavBtn.addEventListener("click", () => {
+    results.innerHTML = "";
+    recent.innerHTML = "";
+    favourites.innerHTML = "";
+    isFavouritesActive = false;
+    showRecent(recentText, songs, fragment2, recent);
+  });
+
+  searchNavBtn.addEventListener("click", () => {
+    const fragment = document.createDocumentFragment();
+    results.innerHTML = "";
+    recent.innerHTML = "";
+    favourites.innerHTML = "";
+    recentText.style.display = "none";
+    isFavouritesActive = false;
+    const filteredSongs = filterSongs(songs, `${searchInput.value}`);
+    renderSongs(filteredSongs, fragment, results);
+  });
+
+  document.addEventListener("renderFavourites", () => {
+    favourites.innerHTML = "";
+    showFavourites(recentText, songs, fragment2, favourites);
+  });
 });
 
 function filterSongs(array, query) {
@@ -54,20 +93,25 @@ function filterSongs(array, query) {
 }
 
 function filterRecentSongs(array) {
-  return array.slice(array.length - 3, array.length + 1);
+  // change to check for date value
+  return array.slice(array.length - 2, array.length + 1);
 }
 
 function renderSongs(array, fragment, container) {
+  const favourites = JSON.parse(localStorage.getItem("chartID") || []);
+
   array.forEach((element) => {
     const conatiner = document.createElement("div");
     conatiner.classList = "song-container";
+    const isFavourite = favourites.includes(element.id);
+    const favIconSrc = isFavourite ? "/star.svg" : "/star-outline.svg";
     conatiner.innerHTML = `
         <button class="fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
-      <img class="fav-icon" src="/star-outline.svg" alt="" />
+      <img class="fav-icon" src="${favIconSrc}" alt="" />
     </button>
       <img src="https://ongeki-net.com/ongeki-mobile/img/music/${element.image_url}" alt="" class="song-jacket" loading="lazy" />
       <div class="song-info">
-        <div class="song-category">${element.category}</div>
+        <div class="song-category ${element.category}">${element.category}</div>
         <div class="song-title">${element.title}</div>
         <div class="song-artist">
           ARTIST: ${element.artist}
@@ -122,10 +166,31 @@ function addFavourite(chartid) {
 
   if (itemIndex > -1) {
     currentFavourites.splice(itemIndex, 1);
+    localStorage.setItem("chartID", JSON.stringify(currentFavourites));
+    if (isFavouritesActive) {
+      const event = new Event("renderFavourites");
+      document.dispatchEvent(event);
+    }
   } else {
     favourites = [...currentFavourites, chartid];
     currentFavourites = favourites;
   }
 
   localStorage.setItem("chartID", JSON.stringify(currentFavourites));
+  console.log(document.querySelector(`.fav-btn[data-chartid="${chartid}"]`));
+  const favButton = document.querySelector(
+    `.fav-btn[data-chartid="${chartid}"]`
+  );
+
+  if (favButton) {
+    const favIcon = favButton.querySelector(".fav-icon");
+    if (favIcon) {
+      const isFavourite = currentFavourites.includes(chartid);
+      favIcon.src = isFavourite ? "/star.svg" : "/star-outline.svg";
+    } else {
+      console.error("Favourite icon not found for chartid:", chartid);
+    }
+  } else {
+    console.error("Favourite button not found for chartid:", chartid);
+  }
 }
