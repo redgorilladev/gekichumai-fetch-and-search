@@ -36,6 +36,15 @@ h2 {
 
 .page-title {
   text-align: center;
+  color: black;
+}
+
+.page-title:hover {
+  color: #52bdea;
+}
+
+.home-link {
+  text-decoration: none;
 }
 
 .song-container {

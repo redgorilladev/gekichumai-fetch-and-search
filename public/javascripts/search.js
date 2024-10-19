@@ -94,8 +94,9 @@ function filterSongs(array, query) {
 }
 
 function filterRecentSongs(array) {
-  // change to check for date value
-  return array.slice(array.length - 2, array.length + 1);
+  const updateDate = array[array.length - 1].date;
+  console.log(updateDate);
+  return array.filter((element) => element.date === updateDate);
 }
 
 function renderSongs(array, fragment, container) {
@@ -111,7 +112,8 @@ function renderSongs(array, fragment, container) {
     numberOfResults.innerHTML = `${length} Favourites`;
   }
   if (container.id === "recent") {
-    numberOfResults.innerHTML = `Data Updated Here`;
+    const updateDate = array[array.length - 1].date;
+    numberOfResults.innerHTML = `${updateDate} Update`;
   }
   array.forEach((element) => {
     const conatiner = document.createElement("div");

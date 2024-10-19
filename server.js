@@ -25,6 +25,7 @@ app.get("/search", async (req, res) => {
     json.forEach((song) => {
       songs.push({
         id: song.id,
+        date: song.date,
         category: song.category,
         title: song.title,
         artist: song.artist,

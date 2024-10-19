@@ -1,8 +1,6 @@
 mobile layout
-create header + link to home
 change the results for search ""
 add spinning circle to loading div
-style the results number for each tab
 generate random course, pull 3 random charts from the full songs []
 change song container bg from grey to something else
 style the 3 tabs: search, recent, favourites
