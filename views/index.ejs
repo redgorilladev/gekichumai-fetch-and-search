@@ -14,7 +14,10 @@
     id="song-search"
     placeholder="enter song title or artist name..."
   />
-  <div id="loading">loading song data...</div>
+  <div id="loading-container">
+    <div id="loading">loading song data...</div>
+    <div class="spinner"></div>
+  </div>
 </div>
 <div id="results">
   <!-- for style testing without requiring data load each refresh -->
@@ -115,4 +118,7 @@
   </div> -->
 </div>
 <div id="recent"></div>
+<div id="remove-favourites-container">
+  <button id="remove-favourites">remove all</button>
+</div>
 <div id="favourites"></div>

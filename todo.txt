@@ -1,10 +1,9 @@
 mobile layout
-change the results for search ""
-add spinning circle to loading div
+change font for header/nav
+style remove favs button
+change order of results for "" search (currently oldest to newest)
 generate random course, pull 3 random charts from the full songs []
 change song container bg from grey to something else
 style the 3 tabs: search, recent, favourites
 handle lunatic chart id's
-remove all favourites button
-change recent to check for date added then only display for that date
 add scroll to top button
