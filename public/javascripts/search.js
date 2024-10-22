@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const recentNavBtn = document.getElementById("recent-nav-btn");
   const searchNavBtn = document.getElementById("search-nav-btn");
   const removeFavsBtn = document.getElementById("remove-favourites");
+  const randomBtn = document.getElementById("random-btn");
   const removeFavsContainer = document.getElementById(
     "remove-favourites-container"
   );
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   favNavBtn.addEventListener("click", () => {
     setActiveButton(favNavBtn);
     isFavouritesActive = true;
-    showFavourites(songs, fragment2, favourites);
+    showFavourites(songs, fragment2, favourites, removeFavsContainer);
   });
 
   recentNavBtn.addEventListener("click", () => {
@@ -90,13 +91,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.addEventListener("renderFavourites", () => {
     favourites.innerHTML = "";
-    showFavourites(songs, fragment2, favourites);
+    showFavourites(songs, fragment2, favourites, removeFavsContainer);
   });
 
   removeFavsBtn.addEventListener("click", () => {
     localStorage.setItem("chartID", JSON.stringify([]));
     const event = new Event("renderFavourites");
     document.dispatchEvent(event);
+  });
+
+  randomBtn.addEventListener("click", () => {
+    results.innerHTML = "";
+    generateRandomCourse(songs, fragment2, results);
   });
 });
 
@@ -124,7 +130,7 @@ function renderSongs(array, fragment, container) {
     numberOfResults.innerHTML = `${length} Result(s)`;
   }
   if (container.id === "favourites") {
-    numberOfResults.innerHTML = `${length} Favourites`;
+    numberOfResults.innerHTML = `${length} Favourite(s)`;
   }
   if (container.id === "recent") {
     const updateDate = array[array.length - 1].date;
@@ -174,20 +180,18 @@ function showRecent(array, fragment, container) {
   renderSongs(recentSongs, fragment, container);
 }
 
-function showFavourites(array, fragment, container) {
+function showFavourites(array, fragment, container, removeBtn) {
   let favourites = JSON.parse(localStorage.getItem("chartID") || "[]");
   let favouriteSongs = array.filter((element) =>
     favourites.includes(element.id)
   );
-  console.log("favourite songs:", favouriteSongs);
-  console.log("Number of favourite songs:", favouriteSongs.length);
   renderSongs(favouriteSongs, fragment, container);
   console.log(
-    "Setting remove favs container display to:",
-    favouriteSongs.length > 0 ? "block" : "none"
+    (removeBtn.style.display = favouriteSongs.length > 0 ? "flex" : "none")
   );
-  document.getElementById("remove-favourites-container").style.display =
-    favouriteSongs.length > 0 ? "block" : "none";
+  console.log(removeBtn);
+  removeBtn.style.display = favouriteSongs.length > 0 ? "flex" : "none";
+  removeBtn.offsetWidth;
 }
 
 function addFavourite(chartid) {
@@ -260,4 +264,14 @@ function showMessage(text, messageElement) {
   setTimeout(() => {
     messageElement.style.opacity = "0";
   }, 1000);
+}
+
+function generateRandomCourse(array, fragment, container) {
+  let course = [];
+  for (let i = 0; i < 3; i++) {
+    let random = Math.floor(Math.random() * array.length);
+    course = [...course, array[random]];
+  }
+  console.log(course);
+  renderSongs(course, fragment, container);
 }

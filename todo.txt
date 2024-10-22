@@ -1,9 +1,12 @@
-mobile layout
-change font for header/nav
-style remove favs button
-change order of results for "" search (currently oldest to newest)
-generate random course, pull 3 random charts from the full songs []
-change song container bg from grey to something else
-style the 3 tabs: search, recent, favourites
-handle lunatic chart id's
-add scroll to top button
+Ver 1:
+    mobile layout
+    fix random course div, create its own div and clear all others
+    handle lunatic chart id's
+    add scroll to top button
+    handle fetch error / all possible other type errors
+
+Ver 2:
+    change font for header/nav
+    reconfigure for Chuni and MaiMai versions
+    create header logo instead of text (title text with japanese ver in the background)
+    make the difficulty level link to youtube?
