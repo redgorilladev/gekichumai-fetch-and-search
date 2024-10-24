@@ -135,6 +135,24 @@ h2 {
   margin: auto;
 }
 
+#random {
+  width: 800px;
+  margin: auto;
+}
+
+.lunatic-detail {
+  display: grid;
+  grid-template-columns: 96px;
+  gap: 0.5rem;
+  justify-items: center;
+}
+
+.lunatic-shadow {
+  text-shadow: 0 0 1.5em rgba(248, 255, 47, 0.5),
+    0 0 1.5em rgba(248, 255, 47, 0.5), 0 0 1.5em rgba(248, 255, 47, 0.5),
+    0 0 1.5em rgba(248, 255, 47, 0.5);
+}
+
 .song-info {
   width: 430px;
 }
@@ -146,6 +164,15 @@ h2 {
 }
 
 .song-level > * {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  color: white;
+  border-radius: 50px;
+}
+
+.lunatic-level {
   width: 48px;
   height: 48px;
   line-height: 48px;
@@ -174,6 +201,24 @@ h2 {
   color: #52bdea;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.scroll-top {
+  display: none;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  z-index: 99;
+}
+
 .basic {
   background-color: #16ff48;
 }
@@ -188,6 +233,11 @@ h2 {
 
 .master {
   background-color: #a810ff;
+}
+
+.lunatic-bg {
+  background-color: #f8ff2f;
+  color: black;
 }
 
 .オンゲキ {

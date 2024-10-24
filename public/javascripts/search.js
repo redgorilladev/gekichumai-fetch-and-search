@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const results = document.getElementById("results");
   const loading = document.getElementById("loading-container");
   const recent = document.getElementById("recent");
+  const randomDiv = document.getElementById("random");
   const favourites = document.getElementById("favourites");
   const fragment2 = document.createDocumentFragment();
   const favNavBtn = document.getElementById("fav-nav-btn");
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function setActiveButton(button) {
-    [favNavBtn, recentNavBtn, searchNavBtn].forEach((button) =>
+    [favNavBtn, recentNavBtn, searchNavBtn, randomBtn].forEach((button) =>
       button.classList.remove("active")
     );
 
@@ -47,6 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     results.innerHTML = "";
     recent.innerHTML = "";
     favourites.innerHTML = "";
+    randomDiv.innerHTML = "";
   }
   searchInput.addEventListener(
     "input",
@@ -101,8 +103,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   randomBtn.addEventListener("click", () => {
-    results.innerHTML = "";
-    generateRandomCourse(songs, fragment2, results);
+    setActiveButton(randomBtn);
+    generateRandomCourse(songs, fragment2, randomDiv);
   });
 });
 
@@ -132,6 +134,9 @@ function renderSongs(array, fragment, container) {
   if (container.id === "favourites") {
     numberOfResults.innerHTML = `${length} Favourite(s)`;
   }
+  if (container.id === "random") {
+    numberOfResults.innerHTML = `Random Course`;
+  }
   if (container.id === "recent") {
     const updateDate = array[array.length - 1].date;
     numberOfResults.innerHTML = `${updateDate} Update`;
@@ -141,7 +146,28 @@ function renderSongs(array, fragment, container) {
     conatiner.classList = "song-container";
     const isFavourite = favourites.includes(element.id);
     const favIconSrc = isFavourite ? "/star.svg" : "/star-outline.svg";
-    conatiner.innerHTML = `
+    if (element.lev_lnt != "" || null) {
+      console.log(element);
+      conatiner.innerHTML = `
+        <button class="fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
+      <img class="fav-icon" src="${favIconSrc}" alt="" />
+    </button>
+      <img src="https://ongeki-net.com/ongeki-mobile/img/music/${element.image_url}" alt="" class="song-jacket" loading="lazy" />
+      <div class="song-info">
+        <div class="song-category lunatic lunatic-shadow">LUNATIC</div>
+        <div class="song-title">${element.title}</div>
+        <div class="song-artist">
+          ARTIST: ${element.artist}
+        </div>
+      </div>
+      <div class="lunatic-detail">
+        <div class="lunatic text-center">LUNATIC LEVEL</div>
+        <div class="lunatic-level lunatic-bg">${element.lev_lnt}</div>
+      </div>
+    `;
+      fragment.appendChild(conatiner);
+    } else {
+      conatiner.innerHTML = `
         <button class="fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
       <img class="fav-icon" src="${favIconSrc}" alt="" />
     </button>
@@ -160,7 +186,8 @@ function renderSongs(array, fragment, container) {
         <div class="master">${element.lev_mas}</div>
       </div>
     `;
-    fragment.appendChild(conatiner);
+      fragment.appendChild(conatiner);
+    }
   });
 
   container.appendChild(numberOfResults);
