@@ -1,11 +1,12 @@
-Ver 1:
-    handle fetch error / all possible other type errors
+Ver 1.1:
+    make the difficulty level link to youtube?
+    create header logo instead of text (title text with japanese ver in the background)
+    add skeleton loading to song jackets
+    apply active blue style to random dice button
 
 Ver 2:
-    add skeleton loading to song jackets
+    handle errors for rendering / filtering functions
     change font for header/nav
     check for bonus track and apply category text/styles
     restyle the scroll top btn
     reconfigure for Chuni and MaiMai versions (add sidebar and separate js files for each game? or different site for each game?)
-    create header logo instead of text (title text with japanese ver in the background)
-    make the difficulty level link to youtube?
