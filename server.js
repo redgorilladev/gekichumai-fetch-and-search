@@ -1,5 +1,4 @@
 const express = require("express");
-const mysql = require("mysql2");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
 app.set("view engine", "ejs");

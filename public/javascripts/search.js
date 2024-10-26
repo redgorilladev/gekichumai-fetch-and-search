@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const searchNavBtn = document.getElementById("search-nav-btn");
   const removeFavsBtn = document.getElementById("remove-favourites");
   const randomBtn = document.getElementById("random-btn");
+  const errorDiv = document.getElementById("error");
   const removeFavsContainer = document.getElementById(
     "remove-favourites-container"
   );
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     searchInput.disabled = true;
     const response = await fetch("/search");
     if (!response.ok) {
-      throw new Error(`Fetch error: ${response.status}`);
+      throw new Error(`${response.status} ${response.statusText}`);
     }
 
     songs = await response.json();
@@ -36,6 +37,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     showRecent(songs, fragment2, recent);
   } catch (error) {
     console.error("Error fetching songs:", error);
+    errorDiv.innerHTML = `${error} <br>Click <a href="/">Here</a> To Refresh`;
+    loading.innerHTML = "";
+    [favNavBtn, recentNavBtn, searchNavBtn, randomBtn].forEach(
+      (button) => (button.disabled = true)
+    );
   }
 
   function setActiveButton(button) {
@@ -105,6 +111,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   randomBtn.addEventListener("click", () => {
     setActiveButton(randomBtn);
     generateRandomCourse(songs, fragment2, randomDiv);
+    removeFavsContainer.style.display = "none";
   });
 });
 

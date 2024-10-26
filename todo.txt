@@ -1,10 +1,10 @@
 Ver 1:
-    mobile layout
+    handle fetch error / all possible other type errors
 
 Ver 2:
+    add skeleton loading to song jackets
     change font for header/nav
     check for bonus track and apply category text/styles
-    handle fetch error / all possible other type errors
     restyle the scroll top btn
     reconfigure for Chuni and MaiMai versions (add sidebar and separate js files for each game? or different site for each game?)
     create header logo instead of text (title text with japanese ver in the background)

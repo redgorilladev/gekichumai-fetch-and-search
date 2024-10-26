@@ -1,4 +1,18 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
 h2 {
+  text-align: center;
+}
+
+#error {
   text-align: center;
 }
 
@@ -266,4 +280,60 @@ h2 {
 
 .bonustrack {
   color: orange;
+}
+
+@media (max-width: 800px) {
+  .input,
+  .tabs,
+  #song-search,
+  #results,
+  #recent,
+  #favourites,
+  #remove-favourites-container,
+  #random {
+    width: 90%;
+  }
+
+  .song-container {
+    width: 90%;
+    flex-wrap: wrap;
+  }
+  .song-jacket {
+    width: 30%;
+    height: 30%;
+  }
+  .song-info {
+    width: 50%;
+    font-size: 0.9rem;
+    flex: 1;
+  }
+  .song-level,
+  .lunatic-detail {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    width: 90%;
+    margin: 0.25rem auto;
+  }
+  .song-level > *,
+  .lunatic-level {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+  }
+  .scroll-top {
+    width: 40px;
+    height: 40px;
+    border: 2px black solid;
+    padding: 0;
+  }
+
+  .lunatic-detail {
+    align-items: center;
+  }
+
+  #arrow-up {
+    width: 36px;
+    height: 36px;
+  }
 }
