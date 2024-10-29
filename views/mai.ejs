@@ -1,0 +1,132 @@
+<div class="input">
+  <a class="home-link" href="/">
+    <h2 class="page-title">maimai music list</h2>
+  </a>
+
+  <div class="tabs">
+    <button class="tab-btn" id="search-nav-btn">Search</button>
+    <button class="tab-btn" id="fav-nav-btn">Favourites</button>
+    <button class="tab-btn active" id="recent-nav-btn">Recent</button>
+    <button class="tab-btn" id="random-btn">
+      <img id="dice-img" src="/dice.svg" alt="" />
+    </button>
+  </div>
+  <input
+    type="text"
+    name="song-search"
+    id="song-search"
+    placeholder="enter song title or artist name..."
+  />
+  <div id="error"></div>
+  <div id="loading-container">
+    <div id="loading">loading song data...</div>
+    <div class="spinner"></div>
+  </div>
+</div>
+<div id="results">
+  <!-- for style testing without requiring data load each refresh -->
+  <!-- <div class="song-container">
+    <button
+      class="fav-btn"
+      data-chartid="169100"
+      onclick="addFavourite(this.dataset.chartid)"
+    >
+      <img class="fav-icon" src="/star-outline.svg" alt="" />
+    </button>
+    <img
+      src="/349d0b298c79af61.png"
+      alt=""
+      class="song-jacket"
+      loading="lazy"
+    />
+    <div class="song-info">
+      <div class="song-category">POPS & ANIME</div>
+      <div class="song-title">デアエ・エクス・マキナ！</div>
+      <div class="song-artist">
+        ARTIST: 千寿 いろは(CV.岡咲 美保)、白丸 美兎(CV.近藤 玲奈)、阿岐留
+        カミラ(CV.若井 友希)、猫足 蕾(CV.芹澤 優)、本巣 叶羽(CV.赤尾 ひかる)
+      </div>
+    </div>
+    <div class="song-level">
+      <div class="basic">4</div>
+      <div class="advanced">9+</div>
+      <div class="expert">13</div>
+      <div class="master">14+</div>
+    </div>
+  </div>
+  <div class="song-container">
+    <img
+      src="/349d0b298c79af61.png"
+      alt=""
+      class="song-jacket"
+      loading="lazy"
+    />
+    <div class="song-info">
+      <div class="song-category">POPS & ANIME</div>
+      <div class="song-title">デアエ・エクス・マキナ！</div>
+      <div class="song-artist">
+        ARTIST: 千寿 いろは(CV.岡咲 美保)、白丸 美兎(CV.近藤 玲奈)、阿岐留
+        カミラ(CV.若井 友希)、猫足 蕾(CV.芹澤 優)、本巣 叶羽(CV.赤尾 ひかる)
+      </div>
+    </div>
+    <div class="song-level">
+      <div class="basic">4</div>
+      <div class="advanced">9+</div>
+      <div class="expert">13</div>
+      <div class="master">14+</div>
+    </div>
+  </div>
+  <div class="song-container">
+    <img
+      src="/349d0b298c79af61.png"
+      alt=""
+      class="song-jacket"
+      loading="lazy"
+    />
+    <div class="song-info">
+      <div class="song-category">POPS & ANIME</div>
+      <div class="song-title">デアエ・エクス・マキナ！</div>
+      <div class="song-artist">
+        ARTIST: 千寿 いろは(CV.岡咲 美保)、白丸 美兎(CV.近藤 玲奈)、阿岐留
+        カミラ(CV.若井 友希)、猫足 蕾(CV.芹澤 優)、本巣 叶羽(CV.赤尾 ひかる)
+      </div>
+    </div>
+    <div class="song-level">
+      <div class="basic">4</div>
+      <div class="advanced">9+</div>
+      <div class="expert">13</div>
+      <div class="master">14+</div>
+    </div>
+  </div>
+  <div class="song-container">
+    <img
+      src="/349d0b298c79af61.png"
+      alt=""
+      class="song-jacket"
+      loading="lazy"
+    />
+    <div class="song-info">
+      <div class="song-category">POPS & ANIME</div>
+      <div class="song-title">デアエ・エクス・マキナ！</div>
+      <div class="song-artist">
+        ARTIST: 千寿 いろは(CV.岡咲 美保)、白丸 美兎(CV.近藤 玲奈)、阿岐留
+        カミラ(CV.若井 友希)、猫足 蕾(CV.芹澤 優)、本巣 叶羽(CV.赤尾 ひかる)
+      </div>
+    </div>
+    <div class="song-level">
+      <div class="basic">4</div>
+      <div class="advanced">9+</div>
+      <div class="expert">13</div>
+      <div class="master">14+</div>
+    </div>
+  </div> -->
+</div>
+<div id="recent"></div>
+<div id="remove-favourites-container">
+  <button id="remove-favourites">remove all</button>
+</div>
+<div id="favourites"></div>
+<div id="random"></div>
+<button id="scroll-top-btn" class="scroll-top">
+  <img id="arrow-up" src="/arrow-up-circle.svg" alt="" />
+</button>

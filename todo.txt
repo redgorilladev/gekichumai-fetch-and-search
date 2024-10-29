@@ -1,12 +1,33 @@
+Chuni Page:
+    change css accent color to chuni yellow?
+    fix css for category names
+    handle worlds end charts
+    handle ultima diffs
+    get date updated for recent tab
+
+MaiMai Page:
+    change css accent color to maimai red or KOP color?
+    fix css for category names
+    change container layout to support 2 chart types
+    handle utage charts
+    handle std charts and song with both std/dx
+    handle reMas diffs
+    find a way to sort the songs array by release date for recent function
+    
+Ongeki Page:
+    check for bonus track and apply category text/styles
+
 Ver 1.1:
+    fix error click here to refresh, direct to correct page
+    create favicon
+    change accent colors to be based on KOP site colors?
     make the difficulty level link to youtube?
     create header logo instead of text (title text with japanese ver in the background)
     add skeleton loading to song jackets
     apply active blue style to random dice button
 
 Ver 2:
+    dark mode
     handle errors for rendering / filtering functions
     change font for header/nav
-    check for bonus track and apply category text/styles
     restyle the scroll top btn
-    reconfigure for Chuni and MaiMai versions (add sidebar and separate js files for each game? or different site for each game?)
