@@ -42,6 +42,7 @@ app.get("/search", async (req, res) => {
         lev_mas: song.lev_mas,
         lev_lnt: song.lev_lnt,
         image_url: song.image_url,
+        bonus: song.bonus,
       });
     });
   } catch (error) {

@@ -95,13 +95,18 @@ h2 {
   height: auto;
 }
 
-.page-title {
+.page-title,
+.chuni-page-title {
   text-align: center;
   color: black;
 }
 
 .page-title:hover {
   color: #52bdea;
+}
+
+.chuni-page-title:hover {
+  color: #fdd501;
 }
 
 .home-link {
@@ -202,7 +207,8 @@ h2 {
   justify-content: space-evenly;
 }
 
-.tab-btn {
+.tab-btn,
+.chuni-tab-btn {
   color: black;
   background: none;
   border: none;
@@ -213,6 +219,11 @@ h2 {
 .tab-btn:hover,
 .active {
   color: #52bdea;
+}
+
+.chuni-tab-btn:hover,
+.chuni-tab-active {
+  color: #fdd501;
 }
 
 .text-center {
@@ -278,8 +289,51 @@ h2 {
   color: #f8ff2f;
 }
 
-.bonustrack {
+.ボーナストラック {
   color: orange;
+}
+
+.chuni-イロドリミドリ {
+  background-color: #f85faf;
+}
+
+.chuni-ゲキマイ {
+  background-color: #593dc5;
+}
+
+.chuni-pops {
+  background-color: #ff2073;
+}
+
+.chuni-niconico {
+  background-color: #8d1be5;
+}
+
+.chuni-ORIGINAL {
+  background-color: #ff7e00;
+}
+
+.chuni-東方Project {
+  background-color: #0064d6;
+}
+
+.chuni-VARIETY {
+  background-color: #00995b;
+}
+
+.chuni-category {
+  width: fit-content;
+}
+
+.ultima {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  color: white;
+  border-radius: 50px;
+  background-color: #ff173e;
+  border: 1px solid black;
 }
 
 @media (max-width: 800px) {

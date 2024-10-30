@@ -149,6 +149,12 @@ function renderSongs(array, fragment, container) {
     numberOfResults.innerHTML = `${updateDate} Update`;
   }
   array.forEach((element) => {
+    let bonus = "";
+    let catname = element.category;
+    if (element.bonus != "" || null) {
+      bonus = "ボーナストラック";
+      catname = "";
+    }
     const conatiner = document.createElement("div");
     conatiner.classList = "song-container";
     const isFavourite = favourites.includes(element.id);
@@ -180,7 +186,7 @@ function renderSongs(array, fragment, container) {
     </button>
       <img src="https://ongeki-net.com/ongeki-mobile/img/music/${element.image_url}" alt="" class="song-jacket" loading="lazy" />
       <div class="song-info">
-        <div class="song-category ${element.category}">${element.category}</div>
+        <div class="song-category ${catname} ${bonus}">${catname} ${bonus}</div>
         <div class="song-title">${element.title}</div>
         <div class="song-artist">
           ARTIST: ${element.artist}

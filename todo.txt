@@ -1,6 +1,5 @@
 Chuni Page:
-    change css accent color to chuni yellow?
-    fix css for category names
+    change song container to match chunithm jp site
     handle worlds end charts
     handle ultima diffs
     get date updated for recent tab
@@ -15,7 +14,6 @@ MaiMai Page:
     find a way to sort the songs array by release date for recent function
     
 Ongeki Page:
-    check for bonus track and apply category text/styles
 
 Ver 1.1:
     fix error click here to refresh, direct to correct page

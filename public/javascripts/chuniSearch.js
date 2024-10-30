@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function setActiveButton(button) {
     [favNavBtn, recentNavBtn, searchNavBtn, randomBtn].forEach((button) =>
-      button.classList.remove("active")
+      button.classList.remove("chuni-tab-active")
     );
 
-    button.classList.add("active");
+    button.classList.add("chuni-tab-active");
 
     results.innerHTML = "";
     recent.innerHTML = "";
@@ -151,6 +151,10 @@ function renderSongs(array, fragment, container) {
     numberOfResults.innerHTML = `Latest Update`;
   }
   array.forEach((element) => {
+    let popsanime = "";
+    if (element.category === "POPS & ANIME") {
+      popsanime = "chuni-pops";
+    }
     const conatiner = document.createElement("div");
     conatiner.classList = "song-container";
     const isFavourite = favourites.includes(element.id);
@@ -161,7 +165,7 @@ function renderSongs(array, fragment, container) {
     </button>
       <img src="https://new.chunithm-net.com/chuni-mobile/html/mobile/img/${element.image_url}" alt="" class="song-jacket" loading="lazy" />
       <div class="song-info">
-        <div class="song-category ${element.category}">${element.category}</div>
+        <div class="song-category chuni-category chuni-${element.category} ${popsanime}">${element.category}</div>
         <div class="song-title">${element.title}</div>
         <div class="song-artist">
           ARTIST: ${element.artist}
@@ -173,6 +177,7 @@ function renderSongs(array, fragment, container) {
         <div class="expert">${element.lev_exp}</div>
         <div class="master">${element.lev_mas}</div>
       </div>
+      <div class="ultima">${element.lev_ult}</div>
     `;
     fragment.appendChild(conatiner);
   });
