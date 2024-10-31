@@ -1,5 +1,5 @@
 Chuni Page:
-    change song container to match chunithm jp site
+    finish styling song container, create mobile layout song container
     handle worlds end charts
     handle ultima diffs
     get date updated for recent tab
@@ -22,10 +22,8 @@ Ver 1.1:
     make the difficulty level link to youtube?
     create header logo instead of text (title text with japanese ver in the background)
     add skeleton loading to song jackets
-    apply active blue style to random dice button
+    apply active accent colour to random dice button
 
 Ver 2:
     dark mode
     handle errors for rendering / filtering functions
-    change font for header/nav
-    restyle the scroll top btn

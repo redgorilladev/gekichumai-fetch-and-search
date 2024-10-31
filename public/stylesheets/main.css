@@ -129,6 +129,32 @@ h2 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+.chuni-song-container {
+  margin: 1rem;
+  gap: 0.5rem;
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(50, 50, 50, 0.6)
+  );
+  color: white;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+}
+
+.song-data-container {
+  width: 90%;
+  display: flex;
+  gap: 1rem;
+}
+
 .song-container > * {
   margin: 0.5rem;
 }
@@ -137,6 +163,19 @@ h2 {
   border: 3px solid black;
   width: 196px;
   height: 196px;
+}
+
+.chuni-song-jacket {
+  border: 3px solid black;
+  width: 50%;
+  height: auto;
+}
+
+.chuni-song-info {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 #results {
@@ -174,6 +213,20 @@ h2 {
 
 .song-info {
   width: 430px;
+}
+
+.chuni-song-level {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  text-align: center;
+  width: 90%;
+  justify-content: center;
+}
+
+.chuni-song-level > * {
+  width: 20%;
+  padding: 0.25rem;
 }
 
 .song-level {
@@ -322,16 +375,12 @@ h2 {
 }
 
 .chuni-category {
-  width: fit-content;
+  width: 90%;
+  padding: 0.2rem;
+  text-align: center;
 }
 
 .ultima {
-  width: 48px;
-  height: 48px;
-  line-height: 48px;
-  text-align: center;
-  color: white;
-  border-radius: 50px;
   background-color: #ff173e;
   border: 1px solid black;
 }

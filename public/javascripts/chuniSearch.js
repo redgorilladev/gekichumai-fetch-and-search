@@ -156,28 +156,31 @@ function renderSongs(array, fragment, container) {
       popsanime = "chuni-pops";
     }
     const conatiner = document.createElement("div");
-    conatiner.classList = "song-container";
+    conatiner.classList = "chuni-song-container";
     const isFavourite = favourites.includes(element.id);
     const favIconSrc = isFavourite ? "/star.svg" : "/star-outline.svg";
     conatiner.innerHTML = `
         <button class="fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
       <img class="fav-icon" src="${favIconSrc}" alt="" />
     </button>
-      <img src="https://new.chunithm-net.com/chuni-mobile/html/mobile/img/${element.image_url}" alt="" class="song-jacket" loading="lazy" />
-      <div class="song-info">
-        <div class="song-category chuni-category chuni-${element.category} ${popsanime}">${element.category}</div>
-        <div class="song-title">${element.title}</div>
-        <div class="song-artist">
-          ARTIST: ${element.artist}
+    <div class="song-category chuni-category chuni-${element.category} ${popsanime}">${element.category}</div>
+      <div class="song-data-container">
+      <img src="https://new.chunithm-net.com/chuni-mobile/html/mobile/img/${element.image_url}" alt="" class="chuni-song-jacket" loading="lazy" />
+        <div class="chuni-song-info">
+          <div class="song-title">${element.title}</div>
+          <div class="song-artist">
+            ARTIST: ${element.artist}
+          </div>
         </div>
       </div>
-      <div class="song-level">
-        <div class="basic">${element.lev_bas}</div>
-        <div class="advanced">${element.lev_adv}</div>
-        <div class="expert">${element.lev_exp}</div>
-        <div class="master">${element.lev_mas}</div>
-      </div>
-      <div class="ultima">${element.lev_ult}</div>
+        <div class="chuni-song-level">
+          <div class="basic">${element.lev_bas}</div>
+          <div class="advanced">${element.lev_adv}</div>
+          <div class="expert">${element.lev_exp}</div>
+          <div class="master">${element.lev_mas}</div>
+          <div class="ultima">${element.lev_ult}</div>
+        </div>
+
     `;
     fragment.appendChild(conatiner);
   });
