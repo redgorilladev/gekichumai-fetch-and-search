@@ -10,6 +10,7 @@ body {
 
 h2 {
   text-align: center;
+  grid-column: 1/-1;
 }
 
 #error {
@@ -69,6 +70,7 @@ h2 {
 }
 
 .input {
+  position: relative;
   width: 800px;
   margin: auto;
 }
@@ -88,6 +90,32 @@ h2 {
   background: none;
   padding: 0;
   cursor: pointer;
+}
+.chuni-fav-btn {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 2px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#dropdown-nav {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#game-nav {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 1rem;
+  padding: 0;
+  left: 0.5rem;
 }
 
 .fav-icon {
@@ -110,7 +138,10 @@ h2 {
 }
 
 .home-link {
+  display: block;
+  width: fit-content;
   text-decoration: none;
+  margin: auto;
 }
 
 .song-container {
@@ -130,13 +161,14 @@ h2 {
 }
 
 .chuni-song-container {
-  margin: 1rem;
+  margin: 1rem auto;
   gap: 0.5rem;
-  width: 50%;
+  width: 90%;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   background: linear-gradient(
     135deg,
     rgba(0, 0, 0, 0.8),
@@ -147,6 +179,7 @@ h2 {
   border: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
+  overflow: hidden;
 }
 
 .song-data-container {
@@ -167,8 +200,8 @@ h2 {
 
 .chuni-song-jacket {
   border: 3px solid black;
-  width: 50%;
-  height: auto;
+  width: 126px;
+  height: 126px;
 }
 
 .chuni-song-info {
@@ -191,6 +224,15 @@ h2 {
 #favourites {
   width: 800px;
   margin: auto;
+}
+
+#chuni-favourites,
+#chuni-recent,
+#chuni-results {
+  width: 800px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
 #random {
@@ -383,6 +425,22 @@ h2 {
 .ultima {
   background-color: #ff173e;
   border: 1px solid black;
+}
+
+.newflag {
+  background-color: #ec2036;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  transform: rotate(-43deg) translate(-23px, -49px);
+  transform-origin: 100% 0;
 }
 
 @media (max-width: 800px) {

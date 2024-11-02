@@ -2,11 +2,11 @@ let isFavouritesActive = false;
 
 document.addEventListener("DOMContentLoaded", async () => {
   const searchInput = document.getElementById("song-search");
-  const results = document.getElementById("results");
+  const results = document.getElementById("chuni-results");
   const loading = document.getElementById("loading-container");
-  const recent = document.getElementById("recent");
+  const recent = document.getElementById("chuni-recent");
   const randomDiv = document.getElementById("random");
-  const favourites = document.getElementById("favourites");
+  const favourites = document.getElementById("chuni-favourites");
   const fragment2 = document.createDocumentFragment();
   const favNavBtn = document.getElementById("fav-nav-btn");
   const recentNavBtn = document.getElementById("recent-nav-btn");
@@ -137,16 +137,16 @@ function renderSongs(array, fragment, container) {
   console.log("results:", length);
   console.log(container.id);
   const numberOfResults = document.createElement("h2");
-  if (container.id === "results") {
+  if (container.id === "chuni-results") {
     numberOfResults.innerHTML = `${length} Result(s)`;
   }
-  if (container.id === "favourites") {
+  if (container.id === "chuni-favourites") {
     numberOfResults.innerHTML = `${length} Favourite(s)`;
   }
   if (container.id === "random") {
     numberOfResults.innerHTML = `Random Course`;
   }
-  if (container.id === "recent") {
+  if (container.id === "chuni-recent") {
     // const updateDate = array[array.length - 1].date;
     numberOfResults.innerHTML = `Latest Update`;
   }
@@ -155,12 +155,21 @@ function renderSongs(array, fragment, container) {
     if (element.category === "POPS & ANIME") {
       popsanime = "chuni-pops";
     }
+    let ultima = "hidden";
+    if (element.lev_ult != "" || null) {
+      ultima = "visible";
+    }
+    let newflag = "hidden";
+    if (element.new === "1") {
+      newflag = "visible";
+    }
     const conatiner = document.createElement("div");
     conatiner.classList = "chuni-song-container";
     const isFavourite = favourites.includes(element.id);
     const favIconSrc = isFavourite ? "/star.svg" : "/star-outline.svg";
     conatiner.innerHTML = `
-        <button class="fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
+      <div class="newflag ${newflag}">NEW</div>
+      <button class="chuni-fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
       <img class="fav-icon" src="${favIconSrc}" alt="" />
     </button>
     <div class="song-category chuni-category chuni-${element.category} ${popsanime}">${element.category}</div>
@@ -178,7 +187,7 @@ function renderSongs(array, fragment, container) {
           <div class="advanced">${element.lev_adv}</div>
           <div class="expert">${element.lev_exp}</div>
           <div class="master">${element.lev_mas}</div>
-          <div class="ultima">${element.lev_ult}</div>
+          <div class="ultima ${ultima}">${element.lev_ult}</div>
         </div>
 
     `;

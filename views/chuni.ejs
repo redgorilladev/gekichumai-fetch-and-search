@@ -1,4 +1,12 @@
 <div class="input">
+  <button id="dropdown-nav">
+    <img src="/menu.svg" alt="" />
+  </button>
+  <ul id="game-nav">
+    <li><a href="/">ongeki</a></li>
+    <li><a href="/chunithm">chunithm</a></li>
+    <li><a href="/maimai">maimai</a></li>
+  </ul>
   <a class="home-link" href="/chunithm">
     <h2 class="chuni-page-title">chunithm music list</h2>
   </a>
@@ -25,7 +33,7 @@
     <div class="spinner"></div>
   </div>
 </div>
-<div id="results">
+<div id="chuni-results">
   <!-- for style testing without requiring data load each refresh -->
   <!-- <div class="song-container">
     <button
@@ -123,11 +131,11 @@
     </div>
   </div> -->
 </div>
-<div id="recent"></div>
+<div id="chuni-recent"></div>
 <div id="remove-favourites-container">
   <button id="remove-favourites">remove all</button>
 </div>
-<div id="favourites"></div>
+<div id="chuni-favourites"></div>
 <div id="random"></div>
 <button id="scroll-top-btn" class="scroll-top">
   <img id="arrow-up" src="/arrow-up-circle.svg" alt="" />

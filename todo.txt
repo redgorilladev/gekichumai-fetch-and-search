@@ -1,8 +1,9 @@
 Chuni Page:
-    finish styling song container, create mobile layout song container
+    create mobile layout song container
+    resize or reposition the favourites star btn
     handle worlds end charts
-    handle ultima diffs
     get date updated for recent tab
+    remove worlds end from random course?
 
 MaiMai Page:
     change css accent color to maimai red or KOP color?
@@ -15,14 +16,18 @@ MaiMai Page:
     
 Ongeki Page:
 
+Ver 1.0:
+    create favicon
+    style the dropdown nav menu
+    
 Ver 1.1:
     fix error click here to refresh, direct to correct page
-    create favicon
     change accent colors to be based on KOP site colors?
     make the difficulty level link to youtube?
     create header logo instead of text (title text with japanese ver in the background)
     add skeleton loading to song jackets
     apply active accent colour to random dice button
+    chuni grid layout check for array length if = 1 then apply grid-column 1/-1
 
 Ver 2:
     dark mode
