@@ -221,6 +221,7 @@ h2 {
 .chuni-song-info {
   width: 50%;
   display: flex;
+  gap: 0.5rem;
   flex-direction: column;
   justify-content: space-evenly;
 }
@@ -450,8 +451,9 @@ h2 {
 .we-kanji {
   width: 40%;
   color: #ffcc00;
-  font-size: 28px;
+  font-size: 1rem;
   background-image: url(/bg_navyblue.png.webp);
+  height: 2rem;
 }
 
 .star1::before {
@@ -497,6 +499,10 @@ h2 {
   transform-origin: 100% 0;
 }
 
+.song-artist {
+  font-size: 0.75em;
+}
+
 @media (max-width: 800px) {
   .input,
   .tabs,
@@ -505,8 +511,18 @@ h2 {
   #recent,
   #favourites,
   #remove-favourites-container,
-  #random {
+  #random,
+  #chuni-results,
+  #chuni-recent,
+  #chuni-favourites {
     width: 90%;
+  }
+
+  #chuni-recent,
+  #chuni-favourites,
+  #chuni-results {
+    display: flex;
+    flex-direction: column;
   }
 
   .song-container {
@@ -516,6 +532,13 @@ h2 {
   .song-jacket {
     width: 30%;
     height: 30%;
+  }
+
+  .chuni-song-jacket {
+    width: 40%;
+    height: 40%;
+    max-width: 126px;
+    max-height: 126px;
   }
   .song-info {
     width: 50%;

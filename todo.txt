@@ -1,7 +1,6 @@
 Chuni Page:
-    create mobile layout song container
     get date updated for recent tab
-    remove worlds end from random course?
+    remove worlds end from random course
     possible to load the favourites div without clearing results? not sure how it happened.
 
 MaiMai Page:
