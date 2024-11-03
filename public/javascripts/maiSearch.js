@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function setActiveButton(button) {
     [favNavBtn, recentNavBtn, searchNavBtn, randomBtn].forEach((button) =>
-      button.classList.remove("active")
+      button.classList.remove("maimai-tab-active")
     );
 
-    button.classList.add("active");
+    button.classList.add("maimai-tab-active");
 
     results.innerHTML = "";
     recent.innerHTML = "";

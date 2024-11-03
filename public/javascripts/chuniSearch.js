@@ -167,7 +167,31 @@ function renderSongs(array, fragment, container) {
     conatiner.classList = "chuni-song-container";
     const isFavourite = favourites.includes(element.id);
     const favIconSrc = isFavourite ? "/star.svg" : "/star-outline.svg";
-    conatiner.innerHTML = `
+    if (parseInt(element.id) >= 8000) {
+      conatiner.innerHTML = `
+      <div class="newflag ${newflag}">NEW</div>
+      <button class="chuni-fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
+      <img class="fav-icon" src="${favIconSrc}" alt="" />
+    </button>
+    <div class="song-category chuni-category worlds-end  ${popsanime}">WORLD'S END</div>
+      <div class="song-data-container">
+      <img src="https://new.chunithm-net.com/chuni-mobile/html/mobile/img/${element.image_url}" alt="" class="chuni-song-jacket" loading="lazy" />
+        <div class="chuni-song-info">
+          <div class="song-title">${element.title}</div>
+          <div class="song-artist">
+            ARTIST: ${element.artist}
+          </div>
+        </div>
+      </div>
+        <div class="chuni-song-level">
+          <div class="we-star star${element.we_star}"></div>
+          <div class="we-kanji">${element.we_kanji}</div>
+        </div>
+
+    `;
+      fragment.appendChild(conatiner);
+    } else {
+      conatiner.innerHTML = `
       <div class="newflag ${newflag}">NEW</div>
       <button class="chuni-fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
       <img class="fav-icon" src="${favIconSrc}" alt="" />
@@ -191,7 +215,8 @@ function renderSongs(array, fragment, container) {
         </div>
 
     `;
-    fragment.appendChild(conatiner);
+      fragment.appendChild(conatiner);
+    }
   });
 
   container.appendChild(numberOfResults);
@@ -250,9 +275,11 @@ function addFavourite(chartid) {
   }
 
   localStorage.setItem("chuniID", JSON.stringify(currentFavourites));
-  console.log(document.querySelector(`.fav-btn[data-chartid="${chartid}"]`));
+  console.log(
+    document.querySelector(`.chuni-fav-btn[data-chartid="${chartid}"]`)
+  );
   const favButton = document.querySelector(
-    `.fav-btn[data-chartid="${chartid}"]`
+    `.chuni-fav-btn[data-chartid="${chartid}"]`
   );
 
   if (favButton) {

@@ -111,11 +111,24 @@ h2 {
 
 #game-nav {
   display: none;
+  flex-direction: column;
+  gap: 1rem;
   list-style: none;
   position: absolute;
   top: 1rem;
-  padding: 0;
   left: 0.5rem;
+  padding: 0.5rem;
+  align-items: flex-start;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: #595959;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
 }
 
 .fav-icon {
@@ -124,7 +137,8 @@ h2 {
 }
 
 .page-title,
-.chuni-page-title {
+.chuni-page-title,
+.maimai-page-title {
   text-align: center;
   color: black;
 }
@@ -303,7 +317,8 @@ h2 {
 }
 
 .tab-btn,
-.chuni-tab-btn {
+.chuni-tab-btn,
+.maimai-tab-btn {
   color: black;
   background: none;
   border: none;
@@ -312,13 +327,24 @@ h2 {
 }
 
 .tab-btn:hover,
-.active {
+.active,
+.ongeki-link:hover,
+.page-title:hover {
   color: #52bdea;
 }
 
 .chuni-tab-btn:hover,
-.chuni-tab-active {
+.chuni-tab-active,
+.chuni-link:hover,
+.chuni-page-title:hover {
   color: #fdd501;
+}
+
+.maimai-tab-btn:hover,
+.maimai-tab-active,
+.maimai-link:hover,
+.maimai-page-title:hover {
+  color: #ec2036;
 }
 
 .text-center {
@@ -414,6 +440,34 @@ h2 {
 
 .chuni-VARIETY {
   background-color: #00995b;
+}
+
+.worlds-end {
+  background-color: black;
+}
+
+.we-star,
+.we-kanji {
+  width: 40%;
+  color: #ffcc00;
+  font-size: 28px;
+  background-image: url(/bg_navyblue.png.webp);
+}
+
+.star1::before {
+  content: "☆";
+}
+.star3::before {
+  content: "☆☆";
+}
+.star5::before {
+  content: "☆☆☆";
+}
+.star7::before {
+  content: "☆☆☆☆";
+}
+.star9::before {
+  content: "☆☆☆☆☆";
 }
 
 .chuni-category {

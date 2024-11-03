@@ -1,26 +1,23 @@
 Chuni Page:
     create mobile layout song container
-    resize or reposition the favourites star btn
-    handle worlds end charts
     get date updated for recent tab
     remove worlds end from random course?
+    possible to load the favourites div without clearing results? not sure how it happened.
 
 MaiMai Page:
-    change css accent color to maimai red or KOP color?
     fix css for category names
     change container layout to support 2 chart types
     handle utage charts
     handle std charts and song with both std/dx
     handle reMas diffs
-    find a way to sort the songs array by release date for recent function
     
 Ongeki Page:
 
 Ver 1.0:
     create favicon
-    style the dropdown nav menu
     
 Ver 1.1:
+    redesign the dropdown menu
     fix error click here to refresh, direct to correct page
     change accent colors to be based on KOP site colors?
     make the difficulty level link to youtube?

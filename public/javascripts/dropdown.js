@@ -3,17 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const gameNav = document.getElementById("game-nav");
 
   drowpdownBtn.addEventListener("click", () => {
-    if (gameNav.style.display === "block") {
+    if (gameNav.style.display === "flex") {
       gameNav.style.display = "none";
     } else {
-      gameNav.style.display = "block";
+      gameNav.style.display = "flex";
     }
   });
 
   document.onclick = function (e) {
     if (
       !drowpdownBtn.contains(e.target) &&
-      gameNav.style.display === "block" &&
+      gameNav.style.display === "flex" &&
       !gameNav.contains(e.target)
     ) {
       console.log("clicked outside menu");
