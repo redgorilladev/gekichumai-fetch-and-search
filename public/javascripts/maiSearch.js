@@ -153,27 +153,56 @@ function renderSongs(array, fragment, container) {
     numberOfResults.innerHTML = `${updateDate} Update`;
   }
   array.forEach((element) => {
+    let standardChart = "hidden";
+    if (element.lev_mas != "") {
+      console.log(element.title, "has a std chart");
+      standardChart = "display-flex";
+    }
+    let dxChart = "hidden";
+    if (element.dx_lev_mas != "") {
+      console.log(element.title, "has a dx chart");
+      dxChart = "display-flex";
+    }
+
     const conatiner = document.createElement("div");
-    conatiner.classList = "song-container";
+    conatiner.classList = `song-container-maimai flex-col mai-${element.category}`;
     const isFavourite = favourites.includes(element.id);
     const favIconSrc = isFavourite ? "/star.svg" : "/star-outline.svg";
     conatiner.innerHTML = `
         <button class="fav-btn" data-chartid="${element.id}" onclick="addFavourite(this.dataset.chartid)">
       <img class="fav-icon" src="${favIconSrc}" alt="" />
     </button>
-      <img src="https://maimaidx.jp/maimai-mobile/img/Music/${element.image_url}" alt="" class="song-jacket" loading="lazy" />
-      <div class="song-info">
-        <div class="song-category ${element.category}">${element.category}</div>
-        <div class="song-title">${element.title}</div>
-        <div class="song-artist">
-          ARTIST: ${element.artist}
+      <div class="mai-song-container">
+        <img src="https://maimaidx.jp/maimai-mobile/img/Music/${element.image_url}" alt="" class="mai-song-jacket" loading="lazy" />
+        <div class="mai-song-inner-container">
+          <div class="song-category mai-${element.category} mai-category-flag">${element.category}</div>
+          <div class="song-title mai-song-title">${element.title}</div>
+          <div class="song-artist">
+            ARTIST: ${element.artist}
+          </div>
         </div>
       </div>
-      <div class="song-level">
-        <div class="basic">${element.dx_lev_bas}</div>
-        <div class="advanced">${element.dx_lev_adv}</div>
-        <div class="expert">${element.dx_lev_exp}</div>
-        <div class="master">${element.dx_lev_mas}</div>
+      <div class="mai-song-level-container">
+        <div class="mai-song-level ${standardChart}">
+        <ul class="mai-level-ul">
+          <li class="basic">${element.lev_bas}</li>
+          <li class="advanced">${element.lev_adv}</li>
+          <li class="expert">${element.lev_exp}</li>
+          <li class="master">${element.lev_mas}</li>
+          <li class="remaster">${element.lev_remas}</li>
+          </ul>
+          <div class="mai-chart-type">Standard</div>
+        </div>
+        <div class="mai-song-level ${dxChart}">
+        <ul class="mai-level-ul">
+          <li class="basic">${element.dx_lev_bas}</li>
+          <li class="advanced">${element.dx_lev_adv}</li>
+          <li class="expert">${element.dx_lev_exp}</li>
+          <li class="master">${element.dx_lev_mas}</li>
+          <li class="remaster">${element.dx_lev_remas}</li>
+          </ul>
+          <div class="mai-chart-type">Deluxe</div>
+        </div>
       </div>
     `;
     fragment.appendChild(conatiner);

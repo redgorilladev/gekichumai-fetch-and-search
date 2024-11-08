@@ -326,9 +326,13 @@ function showMessage(text, messageElement) {
 
 function generateRandomCourse(array, fragment, container) {
   let course = [];
+
+  // remove world's end charts from random course
+  const filteredArray = array.filter((element) => element.id < 8000);
+
   for (let i = 0; i < 3; i++) {
-    let random = Math.floor(Math.random() * array.length);
-    course = [...course, array[random]];
+    let random = Math.floor(Math.random() * filteredArray.length);
+    course = [...course, filteredArray[random]];
   }
   console.log(course);
   renderSongs(course, fragment, container);

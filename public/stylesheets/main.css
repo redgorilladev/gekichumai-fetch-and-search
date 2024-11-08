@@ -174,6 +174,16 @@ h2 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+.song-container-maimai {
+  margin: 2rem 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
 .chuni-song-container {
   margin: 1rem auto;
   gap: 0.5rem;
@@ -216,6 +226,12 @@ h2 {
   border: 3px solid black;
   width: 126px;
   height: 126px;
+}
+
+.mai-song-jacket {
+  border: 3px solid black;
+  width: 25%;
+  height: 25%;
 }
 
 .chuni-song-info {
@@ -286,12 +302,93 @@ h2 {
   padding: 0.25rem;
 }
 
+.mai-song-level {
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.mai-song-level-container {
+  background-color: white;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 0.5rem;
+  margin: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.text-shadow {
+  text-shadow: 0 1px 2px #000;
+}
+
+.mai-level-ul {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.mai-chart-type {
+  line-height: 50px;
+  text-shadow: 0 1px 2px #000;
+  width: 55px;
+  text-align: center;
+}
+
+.mai-level-ul > * {
+  list-style: none;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+  text-shadow: 0 1px 2px #000;
+  font-size: x-large;
+}
+
+.mai-song-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 5%;
+  padding-top: 2%;
+}
+
+.mai-song-inner-container {
+  width: 70%;
+  margin: auto 0;
+}
+
+.mai-category-flag {
+  position: absolute;
+  color: white;
+  top: -8%;
+  right: 10%;
+  border-radius: 5px;
+  padding: 0.25rem;
+  border: 2px solid white;
+  font-size: 1.5rem;
+}
+
+.mai-song-title {
+  font-size: x-large;
+  font-weight: bold;
+  border-bottom: 2px dotted #fff;
+  margin-bottom: 0.5rem;
+}
 .song-level {
   display: grid;
   grid-template-columns: 48px 48px;
   gap: 0.5rem;
 }
 
+.flex-col {
+  flex-direction: column;
+}
 .song-level > * {
   width: 48px;
   height: 48px;
@@ -350,6 +447,10 @@ h2 {
 
 .text-center {
   text-align: center;
+}
+
+.display-flex {
+  display: flex;
 }
 
 .scroll-top {
@@ -445,6 +546,48 @@ h2 {
 
 .worlds-end {
   background-color: black;
+}
+
+.mai-maimai {
+  background-color: #ff4646;
+  box-shadow: 0 2px 0 0 #b54253;
+}
+
+.mai-POPS＆アニメ {
+  background-color: #ff9c24;
+  box-shadow: 0 2px 0 0 #b57e3b;
+}
+
+.mai-niconico＆ボーカロイド {
+  background-color: #12b4ff;
+  box-shadow: 0 2px 0 0 #1096dc;
+}
+
+.mai-東方Project {
+  background-color: #c96feb;
+  box-shadow: 0 2px 0 0 #905ec6;
+}
+
+.mai-ゲーム＆バラエティ {
+  background-color: #6ae03e;
+  box-shadow: 0 2px 0 0 #4dad4e;
+}
+
+.mai-オンゲキ＆CHUNITHM {
+  background-color: #319df8;
+  box-shadow: 0 2px 0 0 #267fcf;
+}
+
+.mai-宴会場 {
+  background-color: #dc39b8;
+  box-shadow: 0 2px 0 0 #b12876;
+}
+
+.remaster {
+  color: #c346e7;
+  border: 1px solid #c346e7;
+  text-align: center;
+  line-height: 48px;
 }
 
 .we-star,

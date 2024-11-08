@@ -1,14 +1,10 @@
 Chuni Page:
-    get date updated for recent tab
-    remove worlds end from random course
+    get date updated for recent tab (save all songs array length once each day then compare with the fetch JSON length, if different get date and save as updated date, use cron?)
     possible to load the favourites div without clearing results? not sure how it happened.
 
 MaiMai Page:
-    fix css for category names
-    change container layout to support 2 chart types
+    fix mobile layout
     handle utage charts
-    handle std charts and song with both std/dx
-    handle reMas diffs
     
 Ongeki Page:
 
