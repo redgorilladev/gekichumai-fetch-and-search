@@ -191,7 +191,7 @@ function renderSongs(array, fragment, container) {
           <li class="master">${element.lev_mas}</li>
           <li class="remaster">${element.lev_remas}</li>
           </ul>
-          <div class="mai-chart-type">Standard</div>
+          <div class="std-chart">スタンダード</div>
         </div>
         <div class="mai-song-level ${dxChart}">
         <ul class="mai-level-ul">
@@ -201,7 +201,7 @@ function renderSongs(array, fragment, container) {
           <li class="master">${element.dx_lev_mas}</li>
           <li class="remaster">${element.dx_lev_remas}</li>
           </ul>
-          <div class="mai-chart-type">Deluxe</div>
+          <div class="dx-chart"><span class="red">で</span><span class="orange">ら</span><span class="yellow">っ</span><span class="green">く</span><span class="blue">す</span></div>
         </div>
       </div>
     `;

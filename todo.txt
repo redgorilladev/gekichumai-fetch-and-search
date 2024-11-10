@@ -3,7 +3,7 @@ Chuni Page:
     possible to load the favourites div without clearing results? not sure how it happened.
 
 MaiMai Page:
-    fix mobile layout
+    fix font size for song title and category flag in mobile layout, too small needs to be responsive/clamp
     handle utage charts
     
 Ongeki Page:

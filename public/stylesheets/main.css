@@ -305,6 +305,7 @@ h2 {
 .mai-song-level {
   justify-content: center;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .mai-song-level-container {
@@ -329,11 +330,28 @@ h2 {
   margin: 0;
 }
 
-.mai-chart-type {
-  line-height: 50px;
-  text-shadow: 0 1px 2px #000;
-  width: 55px;
+.std-chart {
+  line-height: 35px;
+  width: 140px;
   text-align: center;
+  border-radius: 10px;
+  background-color: #48aef9;
+  height: 35px;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.dx-chart {
+  line-height: 35px;
+  width: 140px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: white;
+  border: 2px solid #48aef9;
+  color: #000;
+  height: 35px;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .mai-level-ul > * {
@@ -356,6 +374,7 @@ h2 {
   justify-content: flex-start;
   padding-left: 5%;
   padding-top: 2%;
+  margin-bottom: 2%;
 }
 
 .mai-song-inner-container {
@@ -465,6 +484,22 @@ h2 {
   cursor: pointer;
   border-radius: 10px;
   z-index: 99;
+}
+
+.red {
+  color: #fc4647;
+}
+.blue {
+  color: #06a6e7;
+}
+.yellow {
+  color: #fbde00;
+}
+.green {
+  color: #98c94c;
+}
+.orange {
+  color: #fea227;
 }
 
 .basic {
@@ -716,5 +751,46 @@ h2 {
   #arrow-up {
     width: 36px;
     height: 36px;
+  }
+
+  .mai-song-container {
+    flex-wrap: nowrap;
+    margin-top: 20px;
+  }
+
+  .mai-category-flag,
+  .mai-song-title {
+    font-size: 0.8rem;
+  }
+
+  .mai-song-level {
+    width: 95%;
+  }
+
+  .mai-level-ul {
+    display: flex;
+    gap: 0.2rem;
+    margin: 0;
+    width: 80%;
+    padding-inline-start: 0.5rem;
+    justify-content: space-evenly;
+  }
+
+  .mai-level-ul > * {
+    width: 20%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 1rem;
+  }
+
+  .remaster {
+    line-height: 28px;
+  }
+
+  .dx-chart,
+  .std-chart {
+    min-width: 80px;
+    width: 20%;
+    font-size: 0.8rem;
   }
 }
