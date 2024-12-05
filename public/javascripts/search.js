@@ -149,6 +149,7 @@ function renderSongs(array, fragment, container) {
     numberOfResults.innerHTML = `${updateDate} Update`;
   }
   array.forEach((element) => {
+    let searchTitle = encodeURIComponent(element.title);
     let bonus = "";
     let catname = element.category;
     if (element.bonus != "" || null) {
@@ -175,8 +176,8 @@ function renderSongs(array, fragment, container) {
       </div>
       <div class="lunatic-detail">
         <div class="lunatic text-center">LUNATIC LEVEL</div>
-        <div class="lunatic-level lunatic-bg">${element.lev_lnt}</div>
-      </div>
+          <a class="chart-link lunatic-level lunatic-bg black" href='https://www.youtube.com/results?search_query="${searchTitle}"+lunatic+オンゲキ' target="_blank">${element.lev_lnt}</a>
+        </div>
     `;
       fragment.appendChild(conatiner);
     } else {
@@ -193,10 +194,10 @@ function renderSongs(array, fragment, container) {
         </div>
       </div>
       <div class="song-level">
-        <div class="basic">${element.lev_bas}</div>
-        <div class="advanced">${element.lev_adv}</div>
-        <div class="expert">${element.lev_exc}</div>
-        <div class="master">${element.lev_mas}</div>
+        <a class="basic chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+basic+オンゲキ' target="_blank">${element.lev_bas}</a>
+        <a class="advanced chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+advanced+オンゲキ' target="_blank">${element.lev_adv}</a>
+        <a class="expert chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+expert+オンゲキ' target="_blank">${element.lev_exc}</a>
+        <a class="master chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+master+オンゲキ' target="_blank">${element.lev_mas}</a>
       </div>
     `;
       fragment.appendChild(conatiner);

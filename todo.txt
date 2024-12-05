@@ -15,7 +15,6 @@ Ver 1.1:
     redesign the dropdown menu
     fix error click here to refresh, direct to correct page
     change accent colors to be based on KOP site colors?
-    make the difficulty level link to youtube?
     create header logo instead of text (title text with japanese ver in the background)
     add skeleton loading to song jackets
     apply active accent colour to random dice button

@@ -151,6 +151,7 @@ function renderSongs(array, fragment, container) {
     numberOfResults.innerHTML = `Latest Update`;
   }
   array.forEach((element) => {
+    let searchTitle = encodeURIComponent(element.title);
     let popsanime = "";
     if (element.category === "POPS & ANIME") {
       popsanime = "chuni-pops";
@@ -207,13 +208,12 @@ function renderSongs(array, fragment, container) {
         </div>
       </div>
         <div class="chuni-song-level">
-          <div class="basic">${element.lev_bas}</div>
-          <div class="advanced">${element.lev_adv}</div>
-          <div class="expert">${element.lev_exp}</div>
-          <div class="master">${element.lev_mas}</div>
-          <div class="ultima ${ultima}">${element.lev_ult}</div>
+          <a class="basic chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+basic+Chunithm' target="_blank">${element.lev_bas}</a>
+          <a class="advanced chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+advanced+Chunithm' target="_blank">${element.lev_adv}</a>
+          <a class="expert chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+expert+Chunithm' target="_blank">${element.lev_exp}</a>
+          <a class="master chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+master+Chunithm' target="_blank">${element.lev_mas}</a>
+          <a class="ultima chart-link ${ultima}" href='https://www.youtube.com/results?search_query="${searchTitle}"+ultima+Chunithm' target="_blank">${element.lev_ult}</a>
         </div>
-
     `;
       fragment.appendChild(conatiner);
     }

@@ -153,7 +153,19 @@ function renderSongs(array, fragment, container) {
     numberOfResults.innerHTML = `${updateDate} Update`;
   }
   array.forEach((element) => {
+    let searchTitle = encodeURIComponent(element.title);
     let standardChart = "hidden";
+    let stdRemas = "invisible";
+    let dxRemas = "invisible";
+
+    if (element.lev_remas != "") {
+      stdRemas = "";
+    }
+
+    if (element.dx_lev_remas != "") {
+      dxRemas = "";
+    }
+
     if (element.lev_mas != "") {
       console.log(element.title, "has a std chart");
       standardChart = "display-flex";
@@ -185,21 +197,41 @@ function renderSongs(array, fragment, container) {
       <div class="mai-song-level-container">
         <div class="mai-song-level ${standardChart}">
         <ul class="mai-level-ul">
+        <a class="basic chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+basic+maimai+スタンダード' target="_blank">
           <li class="basic">${element.lev_bas}</li>
+        </a>
+        <a class="advanced chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+advanced+maimai+スタンダード' target="_blank">
           <li class="advanced">${element.lev_adv}</li>
+        </a>
+        <a class="expert chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+expert+maimai+スタンダード' target="_blank">
           <li class="expert">${element.lev_exp}</li>
+        </a>
+        <a class="master chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+master+maimai+スタンダード' target="_blank">
           <li class="master">${element.lev_mas}</li>
+        </a>
+        <a class="remaster chart-link ${stdRemas}" href='https://www.youtube.com/results?search_query="${searchTitle}"+remaster+maimai+スタンダード' target="_blank">
           <li class="remaster">${element.lev_remas}</li>
+        </a>
           </ul>
           <div class="std-chart">スタンダード</div>
         </div>
         <div class="mai-song-level ${dxChart}">
         <ul class="mai-level-ul">
+        <a class="basic chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+basic+maimai+でらっくす' target="_blank">
           <li class="basic">${element.dx_lev_bas}</li>
+        </a>
+        <a class="advanced chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+advanced+maimai+でらっくす' target="_blank">
           <li class="advanced">${element.dx_lev_adv}</li>
+        </a>
+        <a class="expert chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+expert+maimai+でらっくす' target="_blank">
           <li class="expert">${element.dx_lev_exp}</li>
+        </a>
+        <a class="master chart-link" href='https://www.youtube.com/results?search_query="${searchTitle}"+master+maimai+でらっくす' target="_blank">
           <li class="master">${element.dx_lev_mas}</li>
+        </a>
+        <a class="remaster chart-link ${dxRemas}" href='https://www.youtube.com/results?search_query="${searchTitle}"+remaster+maimai+でらっくす' target="_blank">
           <li class="remaster">${element.dx_lev_remas}</li>
+        </a>
           </ul>
           <div class="dx-chart"><span class="red">で</span><span class="orange">ら</span><span class="yellow">っ</span><span class="green">く</span><span class="blue">す</span></div>
         </div>

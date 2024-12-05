@@ -61,6 +61,10 @@ h2 {
   background-color: hsl(0, 100%, 50%);
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .hidden {
   display: none;
 }
@@ -679,6 +683,16 @@ h2 {
 
 .song-artist {
   font-size: 0.75em;
+}
+
+.chart-link {
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+}
+
+.black {
+  color: black;
 }
 
 @media (max-width: 800px) {
